@@ -71,7 +71,7 @@ def gray_code(n: np.uint32) -> np.uint32:
     return np.uint32(gray)
 
 def main():
-    a = np.uint32(6)
+    a = np.uint32(7)
     print(gray_code(a))
 
 
