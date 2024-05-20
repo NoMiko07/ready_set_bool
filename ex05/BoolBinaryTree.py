@@ -74,14 +74,14 @@ class BoolBinaryTree:
     def __str__(self) -> str:
         return str(self.root)
     
-    def negation_normal_form_tree(self):
+    def negation_normal_form(self):
         while self.root.data == '!' and self.root.left.data == '!':
             self.root = self.root.left.left
         self.root.negation_normal_form_branch()
     
 def main():
     test = BoolBinaryTree("AB|!A&")
-    test.negation_normal_form_tree()
+    test.negation_normal_form()
     print(test)
 
 
