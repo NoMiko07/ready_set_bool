@@ -85,14 +85,14 @@ class BoolBinaryBranch:
         self.right.apply_cnf_distributivity()
         
     def find_not_conjuctive_set(self):
-        result: [BoolBinaryBranch] = []
+        result = []
         result += (self.left.find_not_conjuctive_set() if self.left.data == '&' else [self.left]) 
         result += (self.right.find_not_conjuctive_set() if self.right.data == '&' else [self.right])
         return result
     
     def find_not_or_set(self):
-        result: [BoolBinaryBranch] = []
-        result += (self.left.find_not_or_set() if self.left.data == '|' else [self.left]) 
+        result = []
+        result += (self.left.find_not_or_set() if self.left.data == '|' else [self.left])
         result += (self.right.find_not_or_set() if self.right.data == '|' else [self.right])
         return result
     
@@ -100,7 +100,7 @@ class BoolBinaryBranch:
         if self.data == "&":
             self.sort_or_logical()
         elif self.data == "|":
-            result: [BoolBinaryBranch] = self.find_not_or_set()
+            result = self.find_not_or_set()
             self.left = result[0]
             self.right = result[1]
             
@@ -150,20 +150,22 @@ class BoolBinaryTree:
         self.root.negation_normal_form_branch()
     
     def conjuctive_normalize(self):
-        while not  self.root.is_cnf(False):
+        while not self.root.is_cnf(False):
             self.root.apply_cnf_distributivity()
+
         self.root.sort_or_logical()
-        result = self.root.find_not_conjuctive_set()
-        if self.root != "&":
+
+        if self.root.is_minimal_form() or self.root.data != "&":
             return
-        
+
+        result = self.root.find_not_conjuctive_set()
         new_root = BoolBinaryBranch("&", result[0], result[1])
         if len(result) > 2:
             target = new_root
             for i in range(2, len(result)):
                 target.right = BoolBinaryBranch('&', result[i - 1], result[i])
                 target = target.right
-            
+
         self.root = new_root
     
     
@@ -181,7 +183,7 @@ def conjunctive_normal_form(formula: str)-> str:
   
 
 def main():
-    CNF = conjunctive_normal_form('AB|C|D|')
+    CNF = conjunctive_normal_form('AB|!C!&')
     print(CNF)
 
 

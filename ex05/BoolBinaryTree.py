@@ -69,7 +69,7 @@ class BoolBinaryTree:
                 right = branches.pop()
                 left = branches.pop()
                 branches.append(BoolBinaryBranch(i, left, right))
-        self.root = branches[0]        
+        self.root = branches[0]
 
     def __str__(self) -> str:
         return str(self.root)
@@ -87,7 +87,7 @@ def negation_normal_form(formula: str)-> str:
     return str(test)
     
 def main():
-    NNF = negation_normal_form("AB|!A&")
+    NNF = negation_normal_form("AB|C&!")
     print(NNF)
 
 

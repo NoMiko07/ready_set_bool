@@ -53,7 +53,7 @@ def eval_formula(formula: str)-> bool:
             operand_stack.pop()
             res = perform_operation(last2, last1, formula[i])
             operand_stack.append(res)
-        i += 1
+        i += 1 
     if len(operand_stack) > 0 and operand_stack[-1] == 1:
         last = True
     else: 
@@ -61,7 +61,7 @@ def eval_formula(formula: str)-> bool:
     return last
 
 def main():
-   print(eval_formula("11|"))
+   print(eval_formula("10|1&0"))
 
 
 if __name__ == "__main__":

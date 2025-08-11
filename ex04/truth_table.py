@@ -106,7 +106,7 @@ def print_truth_table(formula: str):
     
     i = 0
     for j in range(len(formula)):
-        if formula[j].isalpha():            
+        if formula[j].isalpha():
             truth_table_matrix[:, i] = fill_table(pow(2, nb_variables - (i + 1)), truth_table_matrix.shape[0]).flatten()
             i += 1
     stacked_truth_table = truth_table_matrix[:, :1]
@@ -139,7 +139,7 @@ def print_truth_table(formula: str):
     print_the_matrix(truth_table_matrix)
     
 def main():
-   print_truth_table("AB&CE|")
+   print_truth_table("AB&C|")
 
 
 if __name__ == "__main__":

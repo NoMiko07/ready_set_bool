@@ -1,10 +1,9 @@
-from BoolBinaryTree import BoolBinaryTree, negation_normal_form
-from truth_table import *
+from powerset_class import powerset
 
 def main():
-    NNF = negation_normal_form('AB|!')
-    print(NNF)
-    print_truth_table(NNF)
+    B = powerset([1, 2, 3])
+    for sets in B:
+        print (sets)
 
 if __name__ == "__main__":
     main()

@@ -244,7 +244,7 @@ def sat(formula: str)-> bool:
     return False
 
 def main():
-   print(sat("AB|C&&"))
+   print(sat("AB|C&"))
    
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-from __future__ import annotations
 from beartype import beartype
 
 @beartype
@@ -6,10 +5,6 @@ class PowerSetGenerator:
     def __init__(self, set: list):
         self.set = set
         self.powerset = [[]]
-        
-        
-    def __str__(self):
-        return self.set
     
     def generate(self)-> list: 
         for element in self.set:
@@ -23,14 +18,15 @@ class PowerSetGenerator:
 
     
 @beartype
-def powerset(set: list):
+def powerset(set: list)-> list:
     A = PowerSetGenerator(set)
     B = A.generate()
-    print(B)
-    return None
+    return B
     
 def main():
-    powerset([1, 2, 3])
+    B = powerset([1, 2, 3])
+    for sets in B:
+        print (sets)
 
 
 if __name__ == "__main__":
